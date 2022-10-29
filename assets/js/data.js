@@ -192,6 +192,14 @@ const product = [
     price: 78,
   },
 ];
+function setItemLocalStorage(product) {
+  localStorage.setItem("product", JSON.stringify(product));
+}
+
+var products = JSON.parse(localStorage.getItem("product"));
+
+setItemLocalStorage(product);
+
 const detailProduct = [
   {
     id: 1,
@@ -616,3 +624,46 @@ const detailProduct = [
       "./assets/img/Build-and-Deploy-Ecommerce-Website-main/img/products/f4.jpg",
   },
 ];
+function setDetailLocalStorage() {
+  localStorage.setItem("detailProduct", JSON.stringify(detailProduct));
+}
+setDetailLocalStorage();
+
+var detailProducts = JSON.parse(localStorage.getItem("detailProduct"));
+for (var i = 0; i < products.length; i++) {
+  if (products[i].id == 2) {
+    products.splice(i, 1);
+    setItemLocalStorage(products);
+  }
+}
+var arrayInfo = [
+  {
+    id: 1,
+    fullname: "nguyen hong son",
+    email: "sonnguyen352003@gmail.com",
+    password: "123456",
+  },
+  {
+    id: 2,
+    fullname: "nguyen van tai",
+    email: "taile123@gmail.com",
+    password: "000000",
+  },
+  {
+    id: 3,
+    fullname: "nguyen van A",
+    email: "nguyenvana@gmail.com",
+    password: "1234567",
+  },
+  {
+    id: 4,
+    fullname: "nguyen van B",
+    email: "nguyenvanB@gmail.com",
+    password: "000000",
+  },
+];
+
+function setAccountLocalStorage(arrayInfo) {
+  localStorage.setItem("infor", JSON.stringify(arrayInfo));
+}
+setAccountLocalStorage(arrayInfo);

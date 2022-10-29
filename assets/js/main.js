@@ -33,7 +33,7 @@ var btnNext2 = document.querySelector(".btn-next2");
 var btnPrev2 = document.querySelector(".btn-prev2");
 var btnNext3 = document.querySelector(".btn-next3");
 var btnPrev3 = document.querySelector(".btn-prev3");
-const totalPage = Math.ceil(product.length / perPage);
+const totalPage = Math.ceil(products.length / perPage);
 var productGucci = countProductGucci();
 var productAdidas = countProductAdidas();
 const totalPageGucci = Math.ceil(productGucci.length / perPage);
@@ -59,19 +59,6 @@ function Validator(options) {
       elements = elements.parentElement;
     }
   }
-
-  var arrayInfo = [
-    {
-      fullname: "nguyen hong son",
-      email: "sonnguyen352003@gmail.com",
-      password: "123456",
-    },
-    {
-      fullname: "nguyen van tai",
-      email: "taile123@gmail.com",
-      password: "000000",
-    },
-  ];
 
   var selectorRule = {};
   //hàm thực hiện validate
@@ -344,22 +331,6 @@ if (screen.width > 1023) {
       contact.classList.remove("active");
     }
   };
-  btnHome.addEventListener("click", () => {
-    shop.classList.remove("active");
-    home.classList.add("active");
-  });
-  if (shop) {
-    shop.addEventListener("click", () => {
-      home.classList.remove("active");
-      shop.classList.add("active");
-    });
-  }
-  if (home) {
-    home.addEventListener("click", () => {
-      shop.classList.remove("active");
-      home.classList.add("active");
-    });
-  }
 } else if (screen.width > 740 && screen.width < 1023) {
   window.onscroll = function (e) {
     if (window.scrollY >= 1420) {
@@ -407,6 +378,22 @@ if (screen.width > 1023) {
       contact.classList.remove("active");
     }
   };
+}
+btnHome.addEventListener("click", () => {
+  shop.classList.remove("active");
+  home.classList.add("active");
+});
+if (shop) {
+  shop.addEventListener("click", () => {
+    home.classList.remove("active");
+    shop.classList.add("active");
+  });
+}
+if (home) {
+  home.addEventListener("click", () => {
+    shop.classList.remove("active");
+    home.classList.add("active");
+  });
 }
 
 // js menu
@@ -529,18 +516,18 @@ function getCurentPage(currentPages) {
 
 function countProductGucci() {
   var productGucci = [];
-  product.map((item, index) => {
+  products.map((item, index) => {
     if (item.span == "Gucci") {
-      productGucci.push(product[index]);
+      productGucci.push(products[index]);
     }
   });
   return productGucci;
 }
 function countProductAdidas() {
   var productAdidas = [];
-  product.map((item, index) => {
+  products.map((item, index) => {
     if (item.span == "Adidas") {
-      productAdidas.push(product[index]);
+      productAdidas.push(products[index]);
     }
   });
   return productAdidas;
@@ -549,7 +536,7 @@ function countProductAdidas() {
 function renderProduct(start, end) {
   html = "";
 
-  const content = product.map((item, index) => {
+  const content = products.map((item, index) => {
     if (index >= start && index < end) {
       html += `<div class="pro">`;
       html += `<img src=` + item.image + `>`;
@@ -713,7 +700,7 @@ function changePrice(i) {
   var inputChange = document.querySelector(".total-cartshop input");
   inputChange.addEventListener("change", () => {
     const val = document.querySelector(".total-cartshop input").value;
-    var totalPrice = val * product[i].price;
+    var totalPrice = val * products[i].price;
     pricePro.innerHTML = `$${totalPrice}.00`;
   });
   ready();
@@ -767,7 +754,8 @@ function getIndexProduct(index) {
   html +=
     `<h6 class ="shop-item-title">` + detailProduct[index].title + `</h6> `;
   html += `<h4>` + detailProduct[index].header + `</h4>`;
-  html += `<h2 class="price-pro-detail"> $` + product[index].price + `.00</h2>`;
+  html +=
+    `<h2 class="price-pro-detail"> $` + products[index].price + `.00</h2>`;
   html += ` <select class="size-product-detail" name="" id="">
         <option value="">Select size</option>
         <option value="">XL</option>
@@ -1442,10 +1430,10 @@ var brandSelectTemp = [];
 function filterProducts(filterValue) {
   // pagingItem.classList.add("active");
 
-  for (let i = 0; i < product.length; i++) {
-    var span = product[i].title;
-    var brand = product[i].span;
-    var price = product[i].price;
+  for (let i = 0; i < products.length; i++) {
+    var span = products[i].title;
+    var brand = products[i].span;
+    var price = products[i].price;
 
     if (brandSelect.length == 0) {
       if (
@@ -1453,7 +1441,7 @@ function filterProducts(filterValue) {
         minPrice.value <= price &&
         price <= maxPrice.value
       ) {
-        temp.push(product[i]);
+        temp.push(products[i]);
         temp.forEach((e) => {
           if (productFilter.indexOf(e) == -1) productFilter.push(e);
           return;
@@ -1465,16 +1453,11 @@ function filterProducts(filterValue) {
       price <= maxPrice.value &&
       (brand == brandSelect[0] || brand == brandSelect[1])
     ) {
-      temp.push(product[i]);
+      temp.push(products[i]);
       temp.forEach((e) => {
         if (productFilter.indexOf(e) == -1) productFilter.push(e);
         return;
       });
-      // if (filterValue == "") {
-      //   while (productFilter.length > 0) {
-      //     productFilter.pop();
-      //   }
-      // }
     }
     if (filterValue == "") {
       while (productFilter.length > 0) {
@@ -1529,7 +1512,3 @@ btnSearch.addEventListener("click", () => {
 
   sectionP1.classList.toggle("active");
 });
-// sectionP1.addEventListener("click", () => {
-//   sectionP1.classList.remove("active");
-//   filterAdvance.classList.remove("active");
-// });
