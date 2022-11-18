@@ -49,6 +49,7 @@ var numberPage = document.querySelector(".number-page");
 var pagingItem1 = document.querySelector(".paging-item1");
 var pagingItem2 = document.querySelector(".paging-item2");
 var pagingItem3 = document.querySelector(".paging-item3");
+var idPerson;
 var checkSinginBuyPro = false;
 function Validator(options) {
   function geParent(elements, selector) {
@@ -159,38 +160,91 @@ function Validator(options) {
 
             {}
           );
-
           if (options.form === "#form-1") {
-            arrayInfo.push(formValues);
-            validation1.classList.remove("active");
-            toastSuccess.classList.add("active");
-            signInOut.classList.add("active");
-            userAvatar.classList.add("active");
+            var arrayInfos = JSON.parse(localStorage.getItem("infor"));
+            var check = false;
+            arrayInfos.forEach((e) => {
+              if (e.email === `${formValues.email}`) {
+                alert("Email da ton tai!!");
+                check = true;
+              }
+            });
+            if (check === false) {
+              idPerson = arrayInfos.length + 1;
+              arrayInfos.push({
+                id: arrayInfos.length + 1,
+                fullname: formValues.fullname,
+                email: formValues.email,
+                password: formValues.password,
+              });
+              console.log(arrayInfos.length + 1);
+              if (flag === false) {
+              }
+              validation1.classList.remove("active");
+              toastSuccess.classList.add("active");
+              signInOut.classList.add("active");
+              userAvatar.classList.add("active");
+              setAccountLocalStorage(arrayInfos);
+              checkSinginBuyPro = true;
+            }
           }
           options.onSubmit(arrayInfo);
 
           if (options.form === "#form-2") {
-            var flag = true;
-            arrayInfo.forEach((e) => {
-              if (
-                e.email === `${formValues.email}` &&
-                e.password === `${formValues.password}`
-              ) {
-                validation2.classList.remove("active");
-                document.querySelector(".message-text").innerHTML =
-                  "Chúc Mừng Bạn Đã Đăng Nhập Thành Công";
-                toastSuccess.classList.add("active");
-                signInOut.classList.add("active");
-                userAvatar.classList.add("active");
-                avatarMoblie.classList.add("active");
-                myOrderMobile.classList.add("active");
-                logoutMobile.classList.add("active");
-                flag = false;
-                checkSinginBuyPro = true;
+            if (
+              formValues.email == "admin@gmail.com" &&
+              formValues.password == "admin123"
+            ) {
+              location.href = "test.html";
+            } else {
+              var flag = true;
+              var arrayInfos = JSON.parse(localStorage.getItem("infor"));
+              arrayInfos.forEach((e) => {
+                if (
+                  e.email === `${formValues.email}` &&
+                  e.password === `${formValues.password}`
+                ) {
+                  validation2.classList.remove("active");
+                  document.querySelector(".message-text").innerHTML =
+                    "Login Successfully! ";
+                  toastSuccess.classList.add("active");
+                  signInOut.classList.add("active");
+                  userAvatar.classList.add("active");
+                  avatarMoblie.classList.add("active");
+                  myOrderMobile.classList.add("active");
+                  logoutMobile.classList.add("active");
+                  flag = false;
+                  checkSinginBuyPro = true;
+
+                  idPerson = e.id;
+
+                  var arrayHis = JSON.parse(localStorage.getItem("hisOrder"));
+
+                  for (var i = 0; i < arrayHis.length; i++) {
+                    if (arrayHis[i].idPerson == e.id) {
+                      hisOrderUser(
+                        arrayHis[i].id,
+                        arrayHis[i].size,
+                        arrayHis[i].details,
+                        arrayHis[i].date,
+                        arrayHis[i].cost,
+                        arrayHis[i].status
+                      );
+                    }
+                  }
+                  var moneyBill = document.querySelectorAll(".money-bill-item");
+                  sum = 0;
+                  var toltalAllMoney =
+                    document.querySelector(".total-all-money");
+                  for (i = 0; i < moneyBill.length; i++) {
+                    sum = Number(sum) + Number(moneyBill[i].innerText);
+                  }
+                  toltalAllMoney.innerHTML = `$` + sum + `.00`;
+                }
+              });
+              if (flag == true) {
+                toastFail.classList.add("active");
               }
-            });
-            if (flag == true) {
-              toastFail.classList.add("active");
             }
           }
         }
@@ -438,11 +492,13 @@ if (container) {
 modalContainer.addEventListener("click", (e) => {
   e.stopPropagation();
 });
+
 if (userSingOut) {
   userSingOut.addEventListener("click", () => {
-    window.location.reload();
     signInOut.classList.remove("active");
     userAvatar.classList.remove("active");
+
+    window.location.reload();
   });
 }
 if (logoutMobile) {
@@ -785,22 +841,48 @@ var containerDetail = document.querySelector(".container-detail");
 
 function innerDetail() {
   const currentProduct = document.querySelectorAll("#product1 .pro");
+  console.log(currentProduct);
+  var filterInput = document.querySelector(".search-text");
+  var filterValue = filterInput.value.toUpperCase();
   for (let i = 0; i < currentProduct.length; i++) {
     currentProduct[i].addEventListener("click", () => {
-      getIndexProduct(i);
-
-      changePrice(i);
-      productDetail.classList.add("active");
-
-      containerDetail.classList.add("active");
-      var addToCartButtons = document.querySelectorAll(".shop-item-button");
-      var button = addToCartButtons[0];
-      button.addEventListener("click", addToCartClicked);
-      if (currentPages >= 2) {
-        getIndexProduct(i + perPage * (currentPages - 1));
-        changerSmallProduct();
+      if (filterValue != "") {
+        if (currentPages < 2) {
+          console.log(productFilter[i].id);
+          getIndexProduct(productFilter[i].id - 1);
+          changePrice(i);
+          productDetail.classList.add("active");
+          containerDetail.classList.add("active");
+          var addToCartButtons = document.querySelectorAll(".shop-item-button");
+          var button = addToCartButtons[0];
+          button.addEventListener("click", addToCartClicked);
+        } else if (currentPages >= 2) {
+          getIndexProduct(
+            productFilter[i + perPage * (currentPages - 1)].id - 1
+          );
+          changerSmallProduct();
+          changePrice(i);
+          closeDetail();
+          productDetail.classList.add("active");
+          containerDetail.classList.add("active");
+          var addToCartButtons = document.querySelectorAll(".shop-item-button");
+          var button = addToCartButtons[0];
+          button.addEventListener("click", addToCartClicked);
+        }
+      } else {
+        getIndexProduct(i);
         changePrice(i);
-        closeDetail();
+        productDetail.classList.add("active");
+        containerDetail.classList.add("active");
+        var addToCartButtons = document.querySelectorAll(".shop-item-button");
+        var button = addToCartButtons[0];
+        button.addEventListener("click", addToCartClicked);
+        if (currentPages >= 2) {
+          getIndexProduct(i + perPage * (currentPages - 1));
+          changerSmallProduct();
+          changePrice(i);
+          closeDetail();
+        }
       }
     });
   }
@@ -1172,7 +1254,7 @@ function purChaseClicked() {
     var cartQualityBuy = document.querySelectorAll(".cart-quality");
     var cartSizeBuy = document.querySelectorAll(".cart-item-size");
     var cartRowBuy = document.querySelectorAll(".cart-row");
-    console.log(cartRowBuy);
+
     stt = 1;
     for (i = 0; i < cartRowBuy.length; i++) {
       itemsNameBuy.push({
@@ -1180,7 +1262,7 @@ function purChaseClicked() {
         size: `${cartSizeBuy[i].innerText}`,
         details: `${carItemNames[i].innerText}`,
         quality: `${cartQualityBuy[i].value}`,
-        date: "20-10-2022",
+        date: new Date().toLocaleDateString(),
         total: `${cartItemsPriceBuy[i].innerText}`,
       });
       stt++;
@@ -1199,9 +1281,8 @@ function purChaseClicked() {
     var moneyBill = document.querySelectorAll(".money-bill-item");
     sum = 0;
     var toltalAllMoney = document.querySelector(".total-all-money");
-    console.log(moneyBill[0].innerText.slice(1));
     for (i = 0; i < moneyBill.length; i++) {
-      sum = Number(sum) + Number(moneyBill[i].innerText.slice(1));
+      sum = Number(sum) + Number(moneyBill[i].innerText);
     }
     toltalAllMoney.innerHTML = `$` + sum + `.00`;
 
@@ -1212,6 +1293,29 @@ function purChaseClicked() {
       itemsNameBuy.pop();
     }
     updateCartTotal();
+
+    var numberBill = document.querySelectorAll(".number-bill");
+
+    var sizeBill = document.querySelectorAll(".size-bill");
+    var detailsBill = document.querySelectorAll(".details-bill");
+    var dateBill = document.querySelectorAll(".date-bill");
+    var shippingBill = document.querySelectorAll(".shipping-bill");
+    var costBill = document.querySelectorAll(".money-bill-item");
+    var deliveryStatus = document.querySelectorAll(".delivery-status");
+    var arrayHis = JSON.parse(localStorage.getItem("hisOrder"));
+    for (let i = 0; i < cartItemsPriceBuy.length; i++) {
+      arrayHis.push({
+        idPerson: idPerson,
+        id: numberBill[i].innerText,
+        size: sizeBill[i].innerText,
+        details: detailsBill[i].innerText,
+        date: dateBill[i].innerText,
+        shipping: shippingBill[i].innerText,
+        cost: costBill[i].innerText,
+        status: deliveryStatus[i].innerText,
+      });
+    }
+    setHistoryOrderLocalStorage(arrayHis);
   }
 }
 
@@ -1261,15 +1365,31 @@ function addItemToBill(id, size, details, quality, date, total) {
   cartRowBill.classList.add("cart-row-bill");
   var billOrders = document.querySelectorAll(".bill-order")[0];
   var billRowContent = `
-  <td>${id}</td>
-  <td>${size}</td>
-  <td>${details}    (x${quality})</td>
-  <td >${date}
-  </td>
-  <td>GiaoHangTietKiem</td>
-  <td class="money-bill-item">
-    $${Number(`${total.slice(1)}`) * Number(`${quality}`)}.00
-  </td>`;
+  <td class ="number-bill">${id}</td>
+  <td  class="size-bill">${size}</td>
+  <td class="details-bill">${details}    (x${quality})</td>
+  <td class="date-bill" >${date}</td>
+  <td class="shipping-bill">GiaoHangTietKiem</td>
+  <td class="money-bill-item" style="color :red; font-weight:600;">${
+    Number(`${total.slice(1)}`) * Number(`${quality}`)
+  }.00</td>
+  <td class="delivery-status">chua xu ly</td>
+  `;
+  cartRowBill.innerHTML = billRowContent;
+  billOrders.append(cartRowBill);
+}
+function hisOrderUser(id, size, details, date, cost, status) {
+  var cartRowBill = document.createElement("tr");
+  cartRowBill.classList.add("cart-row-bill");
+  var billOrders = document.querySelectorAll(".bill-order")[0];
+  var billRowContent = `
+  <td class ="number-bill">${id}</td>
+  <td  class="size-bill">${size}</td>
+  <td class="details-bill">${details}</td>
+  <td class="date-bill" >${date}</td>
+  <td class="shipping-bill">GiaoHangTietKiem</td>
+  <td class="money-bill-item" style="color :red; font-weight:600;">${cost}</td>
+  <td class="delivery-status">${status}</td>`;
   cartRowBill.innerHTML = billRowContent;
   billOrders.append(cartRowBill);
 }
@@ -1444,7 +1564,6 @@ function filterProducts(filterValue) {
         temp.push(products[i]);
         temp.forEach((e) => {
           if (productFilter.indexOf(e) == -1) productFilter.push(e);
-          return;
         });
       }
     } else if (
@@ -1456,7 +1575,6 @@ function filterProducts(filterValue) {
       temp.push(products[i]);
       temp.forEach((e) => {
         if (productFilter.indexOf(e) == -1) productFilter.push(e);
-        return;
       });
     }
     if (filterValue == "") {

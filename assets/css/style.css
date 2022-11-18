@@ -181,7 +181,7 @@ body {
 .signin-singout {
   position: relative;
   display: block;
-  margin-left: -550px;
+
   /* display: none; */
 }
 .signin-singout.active {
@@ -879,6 +879,12 @@ footer .copyright {
 #prodetails .single-pro-details span {
   line-height: 25px;
   font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
 }
 #prodetails .single-pro-image img {
   margin-bottom: 10px;
@@ -1075,6 +1081,9 @@ footer .copyright {
   font-size: 16px;
   font-weight: 600;
   color: #000;
+}
+.people {
+  margin-top: 95px;
 }
 /* Cart page */
 /* #cart {

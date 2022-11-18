@@ -197,8 +197,9 @@ function setItemLocalStorage(product) {
 }
 
 var products = JSON.parse(localStorage.getItem("product"));
-
-setItemLocalStorage(product);
+if (localStorage.getItem("product") == null) {
+  setItemLocalStorage(product);
+}
 
 const detailProduct = [
   {
@@ -627,15 +628,19 @@ const detailProduct = [
 function setDetailLocalStorage() {
   localStorage.setItem("detailProduct", JSON.stringify(detailProduct));
 }
-setDetailLocalStorage();
+if (localStorage.getItem("detailProduct") == null) {
+  setDetailLocalStorage();
+}
 
 var detailProducts = JSON.parse(localStorage.getItem("detailProduct"));
-for (var i = 0; i < products.length; i++) {
-  if (products[i].id == 2) {
-    products.splice(i, 1);
-    setItemLocalStorage(products);
-  }
-}
+// xoa phan tu
+// for (var i = 0; i < products.length; i++) {
+//   if (products[i].id == 2) {
+//     products.splice(i, 1);
+//     setItemLocalStorage(products);
+//   }
+// }
+
 var arrayInfo = [
   {
     id: 1,
@@ -662,8 +667,26 @@ var arrayInfo = [
     password: "000000",
   },
 ];
+if (localStorage.getItem("infor") == null) {
+  setAccountLocalStorage(arrayInfo);
+}
 
 function setAccountLocalStorage(arrayInfo) {
   localStorage.setItem("infor", JSON.stringify(arrayInfo));
 }
-setAccountLocalStorage(arrayInfo);
+var arrayInfos = JSON.parse(localStorage.getItem("infor"));
+var arrayHisOrder = [];
+
+function setHistoryOrderLocalStorage(arrayHisOrder) {
+  localStorage.setItem("hisOrder", JSON.stringify(arrayHisOrder));
+}
+if (localStorage.getItem("hisOrder") == null) {
+  setHistoryOrderLocalStorage(arrayHisOrder);
+}
+// var arrayHis = JSON.parse(localStorage.getItem("hisOrder"));
+// for (let i = 0; i < arrayHis.length; i++) {
+//   if (i == 1) {
+//     arrayHis[i].status = "da xu ly";
+//   }
+// }
+// setHistoryOrderLocalStorage(arrayHis);
