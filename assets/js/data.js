@@ -204,8 +204,8 @@ if (localStorage.getItem("product") == null) {
 const detailProduct = [
   {
     id: 1,
-    title: "Home /T-Shirt",
-    header: "Main's Fashion T Shirt",
+    title: "Adidas",
+    header: "Main's T Shirt",
     price: 139.0,
     detail:
       "Cotton, the most common T-shirt material, has been grown by humans for over 7,000 years. The first evidence of cotton use was found in the city of Mehrgarh, one of the earliest South Asian farming settlements in the world. China and India are currently the two largest producers of cotton in the world, with a total combined production of production total of 61 million bales annually. The United States is currently the largest exporter of raw cotton, with sales of $4.9 billion annually. The worldwide cotton market is estimated to total at $12 billion.",
@@ -221,7 +221,7 @@ const detailProduct = [
   },
   {
     id: 2,
-    title: "Jacket",
+    title: "Adidas",
     header: "Main's Fashion T Shirt",
     price: 100.0,
     detail:
@@ -238,8 +238,8 @@ const detailProduct = [
   },
   {
     id: 3,
-    title: "Sweeter",
-    header: "Main's Fashion T Shirt",
+    title: "Adidas",
+    header: "Main's Sweeter T Shirt",
     price: 100.0,
     detail:
       "Cotton, the most common T-shirt material, has been grown by humans for over 7,000 years. The first evidence of cotton use was found in the city of Mehrgarh, one of the earliest South Asian farming settlements in the world. China and India are currently the two largest producers of cotton in the world",
@@ -255,8 +255,8 @@ const detailProduct = [
   },
   {
     id: 4,
-    title: "Home /T-Shirt",
-    header: "Main's Fashion T Shirt",
+    title: "Gucci",
+    header: "Main's Jean T Shirt",
     price: 139.0,
     detail:
       "Cotton, the most common T-shirt material, has been grown by humans for over 7,000 years. The first evidence of cotton use was found in the city of Mehrgarh, one of the earliest South Asian farming settlements in the world. China and India are currently the two largest producers of cotton in the world, with a total combined production of production total of 61 million bales annually. The United States is currently the largest exporter of raw cotton, with sales of $4.9 billion annually. The worldwide cotton market is estimated to total at $12 billion.",
@@ -272,8 +272,8 @@ const detailProduct = [
   },
   {
     id: 5,
-    title: "Home /T-Shirt",
-    header: "Main's Fashion T Shirt",
+    title: "Gucci",
+    header: "Main's Jacket T Shirt",
     price: 100.0,
     detail:
       "Cotton, the most common T-shirt material, has been grown by humans for over 7,000 years. The first evidence of cotton use was found in the city of Mehrgarh, one of the earliest South Asian farming settlements in the world. China and India are currently the two largest producers of cotton in the world",
@@ -290,7 +290,7 @@ const detailProduct = [
   },
   {
     id: 6,
-    title: "Home /T-Shirt",
+    title: "Gucci",
     header: "Main's Fashion T Shirt",
     price: 100.0,
     detail:
@@ -308,7 +308,7 @@ const detailProduct = [
   },
   {
     id: 7,
-    title: "Jean",
+    title: "Adidas",
     header: "Main's Fashion T Shirt",
     price: 139.0,
     detail:
@@ -326,8 +326,8 @@ const detailProduct = [
   },
   {
     id: 8,
-    title: "Lades",
-    header: "Main's Fashion T Shirt",
+    title: "Adidas",
+    header: "Main's Summer T Shirt",
     price: 100.0,
     detail:
       "Cotton, the most common T-shirt material, has been grown by humans for over 7,000 years. The first evidence of cotton use was found in the city of Mehrgarh, one of the earliest South Asian farming settlements in the world. China and India are currently the two largest producers of cotton in the world",
@@ -344,8 +344,8 @@ const detailProduct = [
   },
   {
     id: 9,
-    title: "Home /T-Shirt",
-    header: "Main's Fashion T Shirt",
+    title: "Adidas",
+    header: "Main's Basic T Shirt",
     price: 100.0,
     detail:
       "Cotton, the most common T-shirt material, has been grown by humans for over 7,000 years. The first evidence of cotton use was found in the city of Mehrgarh, one of the earliest South Asian farming settlements in the world. China and India are currently the two largest producers of cotton in the world",
@@ -362,7 +362,7 @@ const detailProduct = [
   },
   {
     id: 10,
-    title: "Home /T-Shirt",
+    title: "Gucci",
     header: "Main's Fashion T Shirt",
     price: 139.0,
     detail:
@@ -380,7 +380,7 @@ const detailProduct = [
   },
   {
     id: 11,
-    title: "Home /T-Shirt",
+    title: "Adidas",
     header: "Main's Fashion T Shirt",
     price: 100.0,
     detail:
@@ -398,7 +398,7 @@ const detailProduct = [
   },
   {
     id: 12,
-    title: "Home /T-Shirt",
+    title: "Gucci",
     header: "Main's Fashion T Shirt",
     price: 100.0,
     detail:
@@ -416,7 +416,7 @@ const detailProduct = [
   },
   {
     id: 13,
-    title: "Home /T-Shirt",
+    title: "Adidas",
     header: "Main's Fashion T Shirt",
     price: 139.0,
     detail:
@@ -434,7 +434,7 @@ const detailProduct = [
   },
   {
     id: 14,
-    title: "Home /T-Shirt",
+    title: "Adidas",
     header: "Main's Fashion T Shirt",
     price: 139.0,
     detail:
@@ -452,7 +452,7 @@ const detailProduct = [
   },
   {
     id: 15,
-    title: "ABC",
+    title: "Gucci",
     header: "Main's Fashion T Shirt",
     price: 100.0,
     detail:
@@ -470,7 +470,7 @@ const detailProduct = [
   },
   {
     id: 16,
-    title: "XYZ",
+    title: "Adidas",
     header: "Main's Fashion T Shirt",
     price: 100.0,
     detail:
@@ -488,7 +488,7 @@ const detailProduct = [
   },
   {
     id: 17,
-    title: "Home /T-Shirt",
+    title: "Adidas",
     header: "Main's Fashion T Shirt",
     price: 139.0,
     detail:
@@ -506,7 +506,7 @@ const detailProduct = [
   },
   {
     id: 18,
-    title: "Sky",
+    title: "Gucci",
     header: "Main's Fashion T Shirt",
     price: 100.0,
     detail:
@@ -524,7 +524,7 @@ const detailProduct = [
   },
   {
     id: 19,
-    title: "ABC",
+    title: "Adidas",
     header: "Main's Fashion T Shirt",
     price: 100.0,
     detail:
@@ -541,7 +541,7 @@ const detailProduct = [
   },
   {
     id: 20,
-    title: "XYZ",
+    title: "Adidas",
     header: "Main's Fashion T Shirt",
     price: 100.0,
     detail:
@@ -558,7 +558,7 @@ const detailProduct = [
   },
   {
     id: 21,
-    title: "Home /T-Shirt",
+    title: "Gucci",
     header: "Main's Fashion T Shirt",
     price: 139.0,
     detail:
@@ -575,7 +575,7 @@ const detailProduct = [
   },
   {
     id: 23,
-    title: "Sky",
+    title: "Adidas",
     header: "Main's Fashion T Shirt",
     price: 100.0,
     detail:
@@ -592,7 +592,7 @@ const detailProduct = [
   },
   {
     id: 24,
-    title: "Sky",
+    title: "Gucci",
     header: "Main's Fashion T Shirt",
     price: 100.0,
     detail:
@@ -609,7 +609,7 @@ const detailProduct = [
   },
   {
     id: 25,
-    title: "Balenciaga",
+    title: "Adidas",
     header: "Main's Fashion T Shirt",
     price: 100.0,
     detail:

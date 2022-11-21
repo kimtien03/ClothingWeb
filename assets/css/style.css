@@ -1181,6 +1181,10 @@ footer .copyright {
 .container-order {
   width: 100%;
 }
+.container-order .row {
+  overflow-y: scroll;
+  max-height: 80vh;
+}
 .container-order thead tr {
   font-size: 16px;
   font-weight: 600;

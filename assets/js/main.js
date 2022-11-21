@@ -1,54 +1,57 @@
-var login = document.querySelector(".option-login");
-var validation1 = document.querySelector("#form-1");
-var validation2 = document.querySelector("#form-2");
-var logout = document.querySelector(".option-logout");
-var container = document.querySelector(".container");
-var checkSingup = document.querySelector(".form-submit-1");
-var checkSingin = document.querySelector(".form-submit-2");
-var toastSuccess = document.querySelector(".message-notification");
-var btnclose = document.querySelector(".close-val1");
-var btnclose2 = document.querySelector(".close-val2");
-var container = document.querySelector(".container");
-var modalContainer = document.querySelector(".modal-container");
-var modalContainer2 = document.querySelector(".modal-container2");
-var toastFail = document.querySelector(".message-notification-fail");
-var cartMobile = document.querySelector(".cart-mobile");
-var myOrderMobile = document.querySelector(".my-order-mobile");
-var logoutMobile = document.querySelector(".logout-mobile");
-var signInOut = document.querySelector(".signin-singout");
-var userAvatar = document.querySelector(".user-avatar");
-var userSingOut = document.querySelector(".option-user-signOut");
-var avatarMoblie = document.querySelector(".avt-menu-mobile");
-var btnHome = document.querySelector(".btn-up");
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+
+var login = $(".option-login");
+var validation1 = $("#form-1");
+var validation2 = $("#form-2");
+var logout = $(".option-logout");
+var container = $(".container");
+var checkSingup = $(".form-submit-1");
+var checkSingin = $(".form-submit-2");
+var toastSuccess = $(".message-notification");
+var btnclose = $(".close-val1");
+var btnclose2 = $(".close-val2");
+var container = $(".container");
+var modalContainer = $(".modal-container");
+var modalContainer2 = $(".modal-container2");
+var toastFail = $(".message-notification-fail");
+var cartMobile = $(".cart-mobile");
+var myOrderMobile = $(".my-order-mobile");
+var logoutMobile = $(".logout-mobile");
+var signInOut = $(".signin-singout");
+var userAvatar = $(".user-avatar");
+var userSingOut = $(".option-user-signOut");
+var avatarMoblie = $(".avt-menu-mobile");
+var btnHome = $(".btn-up");
 let perPage = 8;
 let currentPages = 1;
 let start = 0;
 let end = perPage;
-var btn2 = document.querySelector(".btn-2");
-var btnNext = document.querySelector(".btn-next");
-var btnPrev = document.querySelector(".btn-prev");
-var btnNext1 = document.querySelector(".btn-next1");
-var btnPrev1 = document.querySelector(".btn-prev1");
-var btnNext2 = document.querySelector(".btn-next2");
-var btnPrev2 = document.querySelector(".btn-prev2");
-var btnNext3 = document.querySelector(".btn-next3");
-var btnPrev3 = document.querySelector(".btn-prev3");
+var btn2 = $(".btn-2");
+var btnNext = $(".btn-next");
+var btnPrev = $(".btn-prev");
+var btnNext1 = $(".btn-next1");
+var btnPrev1 = $(".btn-prev1");
+var btnNext2 = $(".btn-next2");
+var btnPrev2 = $(".btn-prev2");
+var btnNext3 = $(".btn-next3");
+var btnPrev3 = $(".btn-prev3");
 const totalPage = Math.ceil(products.length / perPage);
 var productGucci = countProductGucci();
 var productAdidas = countProductAdidas();
 const totalPageGucci = Math.ceil(productGucci.length / perPage);
 const totalPageAdidas = Math.ceil(productAdidas.length / perPage);
 
-var allProduct = document.querySelector(".all-product");
-var gucciProduct = document.querySelector(".gucci-product");
-var adidasProduct = document.querySelector(".adidas-product");
-var procontainer = document.querySelector("#product1 .pro-container");
-var pagingItem = document.querySelector(".paging-item");
-var containerAllProduct = document.querySelector(".container-product-all");
-var numberPage = document.querySelector(".number-page");
-var pagingItem1 = document.querySelector(".paging-item1");
-var pagingItem2 = document.querySelector(".paging-item2");
-var pagingItem3 = document.querySelector(".paging-item3");
+var allProduct = $(".all-product");
+var gucciProduct = $(".gucci-product");
+var adidasProduct = $(".adidas-product");
+var procontainer = $("#product1 .pro-container");
+var pagingItem = $(".paging-item");
+var containerAllProduct = $(".container-product-all");
+var numberPage = $(".number-page");
+var pagingItem1 = $(".paging-item1");
+var pagingItem2 = $(".paging-item2");
+var pagingItem3 = $(".paging-item3");
 var idPerson;
 var checkSinginBuyPro = false;
 function Validator(options) {
@@ -105,7 +108,7 @@ function Validator(options) {
     return !!errorMessage;
   }
   // lấy được form elements
-  var formElement = document.querySelector(options.form);
+  var formElement = $(options.form);
 
   if (formElement) {
     //Lắng nghe sự kiện onsubmit
@@ -195,7 +198,7 @@ function Validator(options) {
               formValues.email == "admin@gmail.com" &&
               formValues.password == "admin123"
             ) {
-              location.href = "test.html";
+              location.href = "admin.html";
             } else {
               var flag = true;
               var arrayInfos = JSON.parse(localStorage.getItem("infor"));
@@ -205,8 +208,7 @@ function Validator(options) {
                   e.password === `${formValues.password}`
                 ) {
                   validation2.classList.remove("active");
-                  document.querySelector(".message-text").innerHTML =
-                    "Login Successfully! ";
+                  $(".message-text").innerHTML = "Login Successfully! ";
                   toastSuccess.classList.add("active");
                   signInOut.classList.add("active");
                   userAvatar.classList.add("active");
@@ -232,10 +234,9 @@ function Validator(options) {
                       );
                     }
                   }
-                  var moneyBill = document.querySelectorAll(".money-bill-item");
+                  var moneyBill = $$(".money-bill-item");
                   sum = 0;
-                  var toltalAllMoney =
-                    document.querySelector(".total-all-money");
+                  var toltalAllMoney = $(".total-all-money");
                   for (i = 0; i < moneyBill.length; i++) {
                     sum = Number(sum) + Number(moneyBill[i].innerText);
                   }
@@ -333,11 +334,11 @@ Validator.isConfirmed = function (selector, getconfirmValue, message) {
   };
 };
 // JS header
-var home = document.querySelector(".home");
-var shop = document.querySelector(".shop");
-var blog = document.querySelector(".blog");
-var about = document.querySelector(".about");
-var contact = document.querySelector(".contact");
+var home = $(".home");
+var shop = $(".shop");
+var blog = $(".blog");
+var about = $(".about");
+var contact = $(".contact");
 if (screen.width > 1023) {
   window.onscroll = function (e) {
     if (window.scrollY >= 942) {
@@ -522,7 +523,7 @@ modalContainer2.addEventListener("click", (e) => {
 });
 
 // // Sidebar
-const body = document.querySelector("body"),
+const body = $("body"),
   sidebar = body.querySelector("nav"),
   searchBtn = body.querySelector(".search-box"),
   modeSwitch = body.querySelector(".toggle-switch"),
@@ -541,11 +542,11 @@ modeSwitch.addEventListener("click", () => {
     modeText.innerText = "Dark mode";
   }
 });
-var btnBars = document.querySelector(".btn-bars");
-var btnClose = document.querySelector(".close-btn");
+var btnBars = $(".btn-bars");
+var btnClose = $(".close-btn");
 
-var sidaebarEvent = document.querySelector(".sidebar-event");
-var containerContent = document.querySelector(".container-content");
+var sidaebarEvent = $(".sidebar-event");
+var containerContent = $(".container-content");
 
 if (btnBars) {
   btnBars.addEventListener("click", () => {
@@ -616,7 +617,7 @@ function renderProduct(start, end) {
     return html;
   });
 
-  document.querySelector(".pro-container").innerHTML = html;
+  $(".pro-container").innerHTML = html;
 }
 function renderProductGucci(start, end) {
   html = "";
@@ -645,7 +646,7 @@ function renderProductGucci(start, end) {
     return html;
   });
 
-  document.querySelector(".pro-container-gucci").innerHTML = html;
+  $(".pro-container-gucci").innerHTML = html;
 }
 function renderProducAdidas() {
   html = "";
@@ -674,7 +675,7 @@ function renderProducAdidas() {
     return html;
   });
 
-  document.querySelector(".pro-container-adidas").innerHTML = html;
+  $(".pro-container-adidas").innerHTML = html;
 }
 function renderProductFilter(start, end) {
   html = "";
@@ -703,7 +704,7 @@ function renderProductFilter(start, end) {
     return html;
   });
 
-  document.querySelector(".pro-container-filter").innerHTML = html;
+  $(".pro-container-filter").innerHTML = html;
 }
 function renderListPageGucci(totalPageGucci) {
   let html = "";
@@ -712,7 +713,7 @@ function renderListPageGucci(totalPageGucci) {
     html += `<button>${i}</button>`;
   }
 
-  document.querySelector(".number-page1").innerHTML = html;
+  $(".number-page1").innerHTML = html;
 }
 function renderListPageAdidas(totalPageAdidas) {
   let html = "";
@@ -721,7 +722,7 @@ function renderListPageAdidas(totalPageAdidas) {
     html += `<button>${i}</button>`;
   }
 
-  document.querySelector(".number-page2").innerHTML = html;
+  $(".number-page2").innerHTML = html;
 }
 function renderListPageFilter(totalPageFilter) {
   let html = "";
@@ -730,7 +731,7 @@ function renderListPageFilter(totalPageFilter) {
     html += `<button>${i}</button>`;
   }
 
-  document.querySelector(".number-page3").innerHTML = html;
+  $(".number-page3").innerHTML = html;
 }
 function gucciProduct() {
   renderProductGucci();
@@ -750,12 +751,12 @@ renderProduct(start, end);
 renderListPage(totalPage);
 btnChangepage(btnNext, btnPrev, totalPage);
 
-var ProductList = document.querySelectorAll("#product1 .pro");
+var ProductList = $$("#product1 .pro");
 function changePrice(i) {
-  var pricePro = document.querySelector(".price-pro-detail");
-  var inputChange = document.querySelector(".total-cartshop input");
+  var pricePro = $(".price-pro-detail");
+  var inputChange = $(".total-cartshop input");
   inputChange.addEventListener("change", () => {
-    const val = document.querySelector(".total-cartshop input").value;
+    const val = $(".total-cartshop input").value;
     var totalPrice = val * products[i].price;
     pricePro.innerHTML = `$${totalPrice}.00`;
   });
@@ -807,9 +808,9 @@ function getIndexProduct(index) {
   html += ` </div>`;
   html += `     
    <div class="single-pro-details">`;
+  html += `<h6 class ="shop-brand">` + detailProduct[index].title + `</h6> `;
   html +=
-    `<h6 class ="shop-item-title">` + detailProduct[index].title + `</h6> `;
-  html += `<h4>` + detailProduct[index].header + `</h4>`;
+    `<h4 class ="shop-item-title">` + detailProduct[index].header + `</h4>`;
   html +=
     `<h2 class="price-pro-detail"> $` + products[index].price + `.00</h2>`;
   html += ` <select class="size-product-detail" name="" id="">
@@ -832,17 +833,17 @@ function getIndexProduct(index) {
 
    </div>
 `;
-  document.querySelector(".detail-container").innerHTML = html;
+  $(".detail-container").innerHTML = html;
   changerSmallProduct();
   closeDetail();
   ready();
 }
-var containerDetail = document.querySelector(".container-detail");
+var containerDetail = $(".container-detail");
 
 function innerDetail() {
-  const currentProduct = document.querySelectorAll("#product1 .pro");
-  console.log(currentProduct);
-  var filterInput = document.querySelector(".search-text");
+  const currentProduct = $$("#product1 .pro");
+
+  var filterInput = $(".search-text");
   var filterValue = filterInput.value.toUpperCase();
   for (let i = 0; i < currentProduct.length; i++) {
     currentProduct[i].addEventListener("click", () => {
@@ -853,7 +854,7 @@ function innerDetail() {
           changePrice(i);
           productDetail.classList.add("active");
           containerDetail.classList.add("active");
-          var addToCartButtons = document.querySelectorAll(".shop-item-button");
+          var addToCartButtons = $$(".shop-item-button");
           var button = addToCartButtons[0];
           button.addEventListener("click", addToCartClicked);
         } else if (currentPages >= 2) {
@@ -865,7 +866,7 @@ function innerDetail() {
           closeDetail();
           productDetail.classList.add("active");
           containerDetail.classList.add("active");
-          var addToCartButtons = document.querySelectorAll(".shop-item-button");
+          var addToCartButtons = $$(".shop-item-button");
           var button = addToCartButtons[0];
           button.addEventListener("click", addToCartClicked);
         }
@@ -874,7 +875,7 @@ function innerDetail() {
         changePrice(i);
         productDetail.classList.add("active");
         containerDetail.classList.add("active");
-        var addToCartButtons = document.querySelectorAll(".shop-item-button");
+        var addToCartButtons = $$(".shop-item-button");
         var button = addToCartButtons[0];
         button.addEventListener("click", addToCartClicked);
         if (currentPages >= 2) {
@@ -896,10 +897,10 @@ function renderListPage(totalPage) {
     html += `<button>${i}</button>`;
   }
 
-  document.querySelector(".number-page").innerHTML = html;
+  $(".number-page").innerHTML = html;
 }
 function changePage() {
-  const currentPage = document.querySelectorAll(".number-page button");
+  const currentPage = $$(".number-page button");
 
   for (let i = 0; i < currentPage.length; i++) {
     currentPage[i].addEventListener("click", () => {
@@ -909,14 +910,14 @@ function changePage() {
       renderProduct(start, end);
       innerDetail();
       // changePrice(i);
-      const btnActive = document.querySelector("button.active");
+      const btnActive = $("button.active");
       btnActive.classList.remove("active");
       currentPage[i].classList.add("active");
     });
   }
 }
 function changePageGucci() {
-  const currentPage = document.querySelectorAll(".number-page1 button");
+  const currentPage = $$(".number-page1 button");
   currentPages = 1;
 
   for (let i = 0; i < currentPage.length; i++) {
@@ -927,7 +928,7 @@ function changePageGucci() {
       renderProductGucci(start, end);
       innerDetail();
       // changePrice(i);
-      const btnActive = document.querySelector(".number-page1 button.active");
+      const btnActive = $(".number-page1 button.active");
 
       btnActive.classList.remove("active");
       currentPage[i].classList.add("active");
@@ -935,7 +936,7 @@ function changePageGucci() {
   }
 }
 function changePageFilter() {
-  const currentPage = document.querySelectorAll(".number-page3 button");
+  const currentPage = $$(".number-page3 button");
   currentPages = 1;
   for (let i = 0; i < currentPage.length; i++) {
     currentPage[i].addEventListener("click", () => {
@@ -946,7 +947,7 @@ function changePageFilter() {
       renderProductFilter(start, end);
       innerDetail();
       // changePrice(i);
-      const btnActive = document.querySelector(".number-page3 button.active");
+      const btnActive = $(".number-page3 button.active");
 
       btnActive.classList.remove("active");
       currentPage[i].classList.add("active");
@@ -954,7 +955,7 @@ function changePageFilter() {
   }
 }
 function ChangepageAdidas() {
-  const currentPage = document.querySelectorAll(".number-page2 button");
+  const currentPage = $$(".number-page2 button");
   currentPages = 1;
   for (let i = 0; i < currentPage.length; i++) {
     currentPage[i].addEventListener("click", () => {
@@ -964,7 +965,7 @@ function ChangepageAdidas() {
       renderProducAdidas(start, end);
       innerDetail();
       // changePrice(i);
-      const btnActive = document.querySelector(".number-page2 button.active");
+      const btnActive = $(".number-page2 button.active");
       btnActive.classList.remove("active");
       currentPage[i].classList.add("active");
     });
@@ -1040,7 +1041,7 @@ function btnChangepage(btnNext, btnPrev, totalPage) {
     if (currentPages > totalPage) {
       currentPages = totalPage;
     } else {
-      const btnActive = document.querySelector(".number-page button.active");
+      const btnActive = $(".number-page button.active");
       btnActive.classList.remove("active");
       let nextBtnActive = btnActive.nextElementSibling;
       nextBtnActive.classList.add("active");
@@ -1054,7 +1055,7 @@ function btnChangepage(btnNext, btnPrev, totalPage) {
     if (currentPages < 1) {
       currentPages = 1;
     } else {
-      const btnActive = document.querySelector("button.active");
+      const btnActive = $("button.active");
       btnActive.classList.remove("active");
       let prevBtnActive = btnActive.previousElementSibling;
       if (prevBtnActive) {
@@ -1073,7 +1074,7 @@ function btnChangepageGucci(btnNext, btnPrev, totalPage) {
     if (currentPages > totalPage) {
       currentPages = totalPage;
     } else {
-      const btnActive = document.querySelector(".number-page1 button.active");
+      const btnActive = $(".number-page1 button.active");
 
       btnActive.classList.remove("active");
       let nextBtnActive = btnActive.nextElementSibling;
@@ -1089,7 +1090,7 @@ function btnChangepageGucci(btnNext, btnPrev, totalPage) {
     if (currentPages < 1) {
       currentPages = 1;
     } else {
-      const btnActive = document.querySelector(".number-page1 button.active");
+      const btnActive = $(".number-page1 button.active");
       btnActive.classList.remove("active");
       let prevBtnActive = btnActive.previousElementSibling;
       if (prevBtnActive) {
@@ -1110,7 +1111,7 @@ function btnChangepageFilter(btnNext, btnPrev, totalPage) {
     if (currentPages > totalPage) {
       currentPages = totalPage;
     } else {
-      const btnActive = document.querySelector(".number-page3 button.active");
+      const btnActive = $(".number-page3 button.active");
       btnActive.classList.remove("active");
       let nextBtnActive = btnActive.nextElementSibling;
       nextBtnActive.classList.add("active");
@@ -1125,7 +1126,7 @@ function btnChangepageFilter(btnNext, btnPrev, totalPage) {
     if (currentPages < 1) {
       currentPages = 1;
     } else {
-      const btnActive = document.querySelector(".number-page3 button.active");
+      const btnActive = $(".number-page3 button.active");
       btnActive.classList.remove("active");
       let prevBtnActive = btnActive.previousElementSibling;
       if (prevBtnActive) {
@@ -1145,7 +1146,7 @@ function btnChangepageAdidas(btnNext, btnPrev, totalPage) {
     if (currentPages > totalPage) {
       currentPages = totalPage;
     } else {
-      const btnActive = document.querySelector(".number-page2 button.active");
+      const btnActive = $(".number-page2 button.active");
 
       btnActive.classList.remove("active");
       let nextBtnActive = btnActive.nextElementSibling;
@@ -1162,7 +1163,7 @@ function btnChangepageAdidas(btnNext, btnPrev, totalPage) {
     if (currentPages < 1) {
       currentPages = 1;
     } else {
-      const btnActive = document.querySelector(".number-page2 button.active");
+      const btnActive = $(".number-page2 button.active");
       btnActive.classList.remove("active");
       let prevBtnActive = btnActive.previousElementSibling;
       if (prevBtnActive) {
@@ -1176,13 +1177,13 @@ function btnChangepageAdidas(btnNext, btnPrev, totalPage) {
   });
 }
 
-var productDetail = document.querySelector(".detail-container");
+var productDetail = $(".detail-container");
 
 productDetail.addEventListener("click", (e) => {
   e.stopPropagation();
 });
 function closeDetail() {
-  var btnCloseDetail = document.querySelectorAll(".close-detail");
+  var btnCloseDetail = $$(".close-detail");
   for (var i = 0; i < btnCloseDetail.length; i++) {
     btnCloseDetail[i].addEventListener("click", () => {
       productDetail.classList.remove("active");
@@ -1220,19 +1221,19 @@ if (document.readyState == "loading") {
   ready();
 }
 function ready() {
-  var removeItemShopCart = document.querySelectorAll(".btn-close-shopcart");
+  var removeItemShopCart = $$(".btn-close-shopcart");
 
   for (var i = 0; i < removeItemShopCart.length; i++) {
     var button = removeItemShopCart[i];
     button.addEventListener("click", removeCartItem);
   }
-  var quantityInputs = document.querySelectorAll(".cart-quality");
+  var quantityInputs = $$(".cart-quality");
 
   for (var i = 0; i < quantityInputs.length; i++) {
     var input = quantityInputs[i];
     input.addEventListener("change", quantityChange);
   }
-  var addToCartButtons = document.querySelectorAll(".shop-item-button");
+  var addToCartButtons = $$(".shop-item-button");
 
   for (var i = 0; i < addToCartButtons.length; i++) {
     var button = addToCartButtons[i];
@@ -1248,12 +1249,12 @@ function purChaseClicked() {
     alert("Please login to continue shopping");
   } else {
     alert("Thanks you for your purchase");
-    var cartItems = document.querySelectorAll(".cart-items")[0];
-    var carItemNames = document.querySelectorAll(".cart-item-title");
-    var cartItemsPriceBuy = document.querySelectorAll(".cart-price");
-    var cartQualityBuy = document.querySelectorAll(".cart-quality");
-    var cartSizeBuy = document.querySelectorAll(".cart-item-size");
-    var cartRowBuy = document.querySelectorAll(".cart-row");
+    var cartItems = $$(".cart-items")[0];
+    var carItemNames = $$(".cart-item-title");
+    var cartItemsPriceBuy = $$(".cart-price");
+    var cartQualityBuy = $$(".cart-quality");
+    var cartSizeBuy = $$(".cart-item-size");
+    var cartRowBuy = $$(".cart-row");
 
     stt = 1;
     for (i = 0; i < cartRowBuy.length; i++) {
@@ -1278,9 +1279,9 @@ function purChaseClicked() {
         itemsNameBuy[i].total
       );
     }
-    var moneyBill = document.querySelectorAll(".money-bill-item");
+    var moneyBill = $$(".money-bill-item");
     sum = 0;
-    var toltalAllMoney = document.querySelector(".total-all-money");
+    var toltalAllMoney = $(".total-all-money");
     for (i = 0; i < moneyBill.length; i++) {
       sum = Number(sum) + Number(moneyBill[i].innerText);
     }
@@ -1294,32 +1295,44 @@ function purChaseClicked() {
     }
     updateCartTotal();
 
-    var numberBill = document.querySelectorAll(".number-bill");
+    var numberBill = $$(".number-bill");
 
-    var sizeBill = document.querySelectorAll(".size-bill");
-    var detailsBill = document.querySelectorAll(".details-bill");
-    var dateBill = document.querySelectorAll(".date-bill");
-    var shippingBill = document.querySelectorAll(".shipping-bill");
-    var costBill = document.querySelectorAll(".money-bill-item");
-    var deliveryStatus = document.querySelectorAll(".delivery-status");
+    var sizeBill = $$(".size-bill");
+    var detailsBill = $$(".details-bill");
+    var dateBill = $$(".date-bill");
+    var shippingBill = $$(".shipping-bill");
+    var costBill = $$(".money-bill-item");
+    var deliveryStatus = $$(".delivery-status");
     var arrayHis = JSON.parse(localStorage.getItem("hisOrder"));
+    temp = 0;
     for (let i = 0; i < cartItemsPriceBuy.length; i++) {
       arrayHis.push({
         idPerson: idPerson,
-        id: numberBill[i].innerText,
-        size: sizeBill[i].innerText,
-        details: detailsBill[i].innerText,
-        date: dateBill[i].innerText,
-        shipping: shippingBill[i].innerText,
-        cost: costBill[i].innerText,
-        status: deliveryStatus[i].innerText,
+        id: numberBill[numberBill.length - cartItemsPriceBuy.length + temp]
+          .innerText,
+        size: sizeBill[numberBill.length - cartItemsPriceBuy.length + temp]
+          .innerText,
+        details:
+          detailsBill[numberBill.length - cartItemsPriceBuy.length + temp]
+            .innerText,
+        date: dateBill[numberBill.length - cartItemsPriceBuy.length + temp]
+          .innerText,
+        shipping:
+          shippingBill[numberBill.length - cartItemsPriceBuy.length + temp]
+            .innerText,
+        cost: costBill[numberBill.length - cartItemsPriceBuy.length + temp]
+          .innerText,
+        status:
+          deliveryStatus[numberBill.length - cartItemsPriceBuy.length + temp]
+            .innerText,
       });
+      temp++;
     }
     setHistoryOrderLocalStorage(arrayHis);
   }
 }
 
-var closeBill = document.querySelector(".btn-close-bill");
+var closeBill = $(".btn-close-bill");
 closeBill.addEventListener("click", () => {
   billOrderProduct.classList.remove("active");
   containerContent.classList.remove("setheight");
@@ -1327,28 +1340,29 @@ closeBill.addEventListener("click", () => {
 });
 function addToCartClicked(e) {
   var button = e.target;
-  document.querySelector(".cart-no-item").classList.add("active");
-  document.querySelector(".table-bill").classList.add("active");
-  document.querySelector(".cart-total-bill").classList.add("active");
-  document.querySelector(".container-table").classList.add("active");
-  document.querySelector(".container-content-no-item").classList.add("active");
+  $(".cart-no-item").classList.add("active");
+  $(".table-bill").classList.add("active");
+  $(".cart-total-bill").classList.add("active");
+  $(".container-table").classList.add("active");
+  $(".container-content-no-item").classList.add("active");
   var shopItem = button.parentElement.parentElement;
   var title = shopItem.querySelectorAll(".shop-item-title")[0].innerText;
   var price = shopItem.querySelectorAll(".price-pro-detail")[0].innerText;
-  var imgSrc = document.querySelectorAll(".shop-item-img")[0].src;
-  var temp = document.querySelector(".size-product-detail");
+  var brandShop = shopItem.querySelectorAll(".shop-brand")[0].innerText;
+  var imgSrc = $$(".shop-item-img")[0].src;
+  var temp = $(".size-product-detail");
   var text = temp.options[temp.selectedIndex].text;
   if (text == "Select size") {
     alert("Plese chose Size!");
   } else {
-    addItemToCart(title, price, imgSrc, text);
+    addItemToCart(title, brandShop, price, imgSrc, text);
     updateCartTotal();
   }
 }
 
 // Bill order click
-var billOrder = document.querySelector(".my-order");
-var billOrderProduct = document.querySelector(".bill-order-product");
+var billOrder = $(".my-order");
+var billOrderProduct = $(".bill-order-product");
 billOrder.addEventListener("click", () => {
   billOrderProduct.classList.add("active");
   containerContent.classList.add("setheight");
@@ -1363,11 +1377,11 @@ myOrderMobile.addEventListener("click", () => {
 function addItemToBill(id, size, details, quality, date, total) {
   var cartRowBill = document.createElement("tr");
   cartRowBill.classList.add("cart-row-bill");
-  var billOrders = document.querySelectorAll(".bill-order")[0];
+  var billOrders = $$(".bill-order")[0];
   var billRowContent = `
   <td class ="number-bill">${id}</td>
   <td  class="size-bill">${size}</td>
-  <td class="details-bill">${details}    (x${quality})</td>
+  <td class="details-bill">${details}    x ${quality}</td>
   <td class="date-bill" >${date}</td>
   <td class="shipping-bill">GiaoHangTietKiem</td>
   <td class="money-bill-item" style="color :red; font-weight:600;">${
@@ -1381,7 +1395,7 @@ function addItemToBill(id, size, details, quality, date, total) {
 function hisOrderUser(id, size, details, date, cost, status) {
   var cartRowBill = document.createElement("tr");
   cartRowBill.classList.add("cart-row-bill");
-  var billOrders = document.querySelectorAll(".bill-order")[0];
+  var billOrders = $$(".bill-order")[0];
   var billRowContent = `
   <td class ="number-bill">${id}</td>
   <td  class="size-bill">${size}</td>
@@ -1393,11 +1407,11 @@ function hisOrderUser(id, size, details, date, cost, status) {
   cartRowBill.innerHTML = billRowContent;
   billOrders.append(cartRowBill);
 }
-function addItemToCart(title, price, imgSrc, size) {
+function addItemToCart(title, brandShop, price, imgSrc, size) {
   var cartRow = document.createElement("tr");
   cartRow.classList.add("cart-row");
-  var cartItems = document.querySelectorAll(".cart-items")[0];
-  var carItemNames = document.querySelectorAll(".cart-item-title");
+  var cartItems = $$(".cart-items")[0];
+  var carItemNames = $$(".cart-item-title");
 
   for (var i = 0; i < carItemNames.length; i++) {
     if (carItemNames[i].innerText == title) {
@@ -1410,7 +1424,8 @@ function addItemToCart(title, price, imgSrc, size) {
   <a class="btn-close-shopcart" href="#"><i class="far fa-times-circle "></a></i>
   </td>
   <td><img src="${imgSrc}" alt=""></td>
-  <td class="cart-item-title">${title}</td>
+  <td class="cart-item-title">${title} 
+  ${brandShop}</td>
   <td class="cart-price">${price}</td>
   <td ><input class="cart-quality" type="number" value="1" min="1">
   </td>
@@ -1436,7 +1451,7 @@ function removeCartItem(e) {
     }
   }
 }
-var headerContainer = document.querySelector("#header");
+var headerContainer = $("#header");
 function quantityChange(e) {
   var input = e.target;
   if (isNaN(input.value) || input.value <= 0) {
@@ -1446,7 +1461,7 @@ function quantityChange(e) {
 }
 
 function updateCartTotal() {
-  var cartItemContainer = document.querySelectorAll(".cart-items")[0];
+  var cartItemContainer = $$(".cart-items")[0];
   var cartRows = cartItemContainer.querySelectorAll(".cart-row");
 
   var total = 0;
@@ -1460,23 +1475,23 @@ function updateCartTotal() {
     total = total + price * quantity;
   }
   total = Math.round(total * 100) / 100;
-  document.querySelectorAll(".cart-total-price")[0].innerText = `$` + total;
-  document.querySelectorAll(".Last-total-price")[0].innerText = `$` + total;
+  $$(".cart-total-price")[0].innerText = `$` + total;
+  $$(".Last-total-price")[0].innerText = `$` + total;
 }
 document
   .querySelector(".close-detail.btn-close-no-item")
   .addEventListener("click", () => {
-    document.querySelector(".container-cart-shop").classList.remove("active");
+    $(".container-cart-shop").classList.remove("active");
     containerContent.classList.remove("setheight");
     headerContainer.classList.remove("active");
   });
-document.querySelector(".cart-shop-item").addEventListener("click", () => {
-  document.querySelector(".container-cart-shop").classList.add("active");
+$(".cart-shop-item").addEventListener("click", () => {
+  $(".container-cart-shop").classList.add("active");
   containerContent.classList.add("setheight");
   headerContainer.classList.add("active");
 });
 cartMobile.addEventListener("click", () => {
-  document.querySelector(".container-cart-shop").classList.add("active");
+  $(".container-cart-shop").classList.add("active");
 
   sidebar.classList.remove("active");
   containerContent.classList.add("setheight");
@@ -1484,16 +1499,16 @@ cartMobile.addEventListener("click", () => {
 });
 
 //Filter product
-var filterAdidas = document.querySelector(".filter-adidas");
-var check1 = document.querySelector("#check1");
-var check2 = document.querySelector("#check2");
-var filterGucci = document.querySelector(".filter-gucci");
-var valueAdidas = document.querySelector(".brand-adidas");
-var valueGucci = document.querySelector(".brand-gucci");
-var minPrice = document.querySelector(".min-price");
-var maxPrice = document.querySelector(".max-price");
-var btnSearch = document.querySelector(".btn-search");
-var filterInput = document.querySelector(".search-text");
+var filterAdidas = $(".filter-adidas");
+var check1 = $("#check1");
+var check2 = $("#check2");
+var filterGucci = $(".filter-gucci");
+var valueAdidas = $(".brand-adidas");
+var valueGucci = $(".brand-gucci");
+var minPrice = $(".min-price");
+var maxPrice = $(".max-price");
+var btnSearch = $(".btn-search");
+var filterInput = $(".search-text");
 searchAdvanced();
 filterInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
@@ -1619,10 +1634,10 @@ function searchAdvanced() {
     }
   });
 }
-var filterAdvance = document.querySelector(".filter-advanced");
-var sectionP1 = document.querySelector("#product1.section-p1");
+var filterAdvance = $(".filter-advanced");
+var sectionP1 = $("#product1.section-p1");
 btnSearch.addEventListener("click", () => {
-  var product = document.querySelectorAll("#product1 .pro");
+  var product = $$("#product1 .pro");
   for (i = 0; i < product.length; i++) {
     product[i].classList.toggle("active");
   }
